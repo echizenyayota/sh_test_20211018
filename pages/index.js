@@ -14,13 +14,18 @@ const Index = () => {
 
   const [updateProduct] = useMutation(ProductUpdatemutation);
 
+  console.log(products);
+  
   const productTableDisplayData = useMemo(() => products.map((product) => [
     product.id, 
     product.title, 
     `${product.title}${appendToTitle}`,
     product.descriptionHtml,
-    `${product.descriptionHtml}${appendToDescription}`  
+    `${product.descriptionHtml}${appendToDescription}`,  
   ]), [products, appendToTitle, appendToDescription]);
+
+  console.log(products);
+
 
   const submitHandler = useCallback(() => {
     let count = 0;
@@ -77,7 +82,6 @@ const Index = () => {
                 showVariants={false}
                 open={pickerOpen}
                 onSelection={(resources) => {
-                  console.log(resources);
                   setProducts(resources.selection);
                 }}
               />
@@ -86,8 +90,8 @@ const Index = () => {
           </Card.Section>
           <Card.Section>
             {productTableDisplayData.length ? <DataTable
-              columnContentTypes={['text','text','text','text','text']}
-              headings={['ID', 'Old Title', 'New Title', 'Old Description', 'New Description']}
+              columnContentTypes={['text','text','text','numeric','numeric']}
+              headings={['ID', 'Old Title', 'New Title', 'Old Description', 'New Description', 'Old Price', 'New Price']}
               rows={productTableDisplayData}
             /> : <EmptyState heading="no products selection"/>}
           </Card.Section>
