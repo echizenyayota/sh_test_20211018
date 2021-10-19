@@ -13,8 +13,6 @@ const Index = () => {
   const [showToast, setShowToast] = useState(false);
 
   const [updateProduct] = useMutation(ProductUpdatemutation);
-
-  // console.log(products);
   
   const productTableDisplayData = useMemo(() => (products.map((product) => [
     product.id, 
@@ -23,9 +21,6 @@ const Index = () => {
     product.descriptionHtml,
     `${product.descriptionHtml}${appendToDescription}`,  
   ])), [products, appendToTitle, appendToDescription]);
-
-  // console.log(products);
-
 
   const submitHandler = useCallback(() => {
     let count = 0;
@@ -39,7 +34,6 @@ const Index = () => {
           }
         }
       }).then((data) => {
-        console.log(products);
         console.log('Update Product', count, data);
         count++;
         if (products[count]) {
