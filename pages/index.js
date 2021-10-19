@@ -14,17 +14,17 @@ const Index = () => {
 
   const [updateProduct] = useMutation(ProductUpdatemutation);
 
-  console.log(products);
+  // console.log(products);
   
-  const productTableDisplayData = useMemo(() => products.map((product) => [
+  const productTableDisplayData = useMemo(() => (products.map((product) => [
     product.id, 
     product.title, 
     `${product.title}${appendToTitle}`,
     product.descriptionHtml,
     `${product.descriptionHtml}${appendToDescription}`,  
-  ]), [products, appendToTitle, appendToDescription]);
+  ])), [products, appendToTitle, appendToDescription]);
 
-  console.log(products);
+  // console.log(products);
 
 
   const submitHandler = useCallback(() => {
@@ -39,6 +39,7 @@ const Index = () => {
           }
         }
       }).then((data) => {
+        console.log(products);
         console.log('Update Product', count, data);
         count++;
         if (products[count]) {
