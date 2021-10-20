@@ -7,6 +7,13 @@ export const ProductUpdatemutation = gql`
         id
         description
         title
+        variants(first:10) {
+          edges {
+            node {
+              price
+            }
+          }
+        }
       }
       userErrors {
         field

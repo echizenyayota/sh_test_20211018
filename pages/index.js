@@ -19,7 +19,7 @@ const Index = () => {
     product.title, 
     `${product.title}${appendToTitle}`,
     product.descriptionHtml,
-    `${product.descriptionHtml}${appendToDescription}`,  
+    `${product.descriptionHtml}${appendToDescription}`,
   ])), [products, appendToTitle, appendToDescription]);
 
   const submitHandler = useCallback(() => {
@@ -34,6 +34,10 @@ const Index = () => {
           }
         }
       }).then((data) => {
+        // console.log(data.variants.edges[0].node.price);
+        // console.log(product.variants.edges[0].node.price);
+        console.log(products);
+        console.log(data);
         console.log('Update Product', count, data);
         count++;
         if (products[count]) {
