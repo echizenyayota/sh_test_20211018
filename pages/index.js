@@ -36,7 +36,7 @@ const Index = () => {
       }).then((data) => {
         // console.log(data.variants.edges[0].node.price);
         // console.log(products.variants.edges[0].node.price);
-        console.log(products);
+        console.log(data.data.productUpdate.product.variants.edges[0].node.price);
         console.log(data);
         console.log('Update Product', count, data);
         count++;
